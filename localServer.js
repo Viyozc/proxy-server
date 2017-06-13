@@ -7,6 +7,7 @@ var fs      = require('fs');
 var base = __dirname;
 http.createServer(function (req, res) {
     if (req.url.indexOf('baidu') !== -1) {
+        //转发规则
         var theUrl = 'http://www.baidu.com';
         req.pipe(request(theUrl)).pipe(res);
     } else {
@@ -22,7 +23,7 @@ http.createServer(function (req, res) {
                 res.writeHeader(200, {
                     'content-type': 'text/html;charset="utf-8"'
                 });
-                res.write(data);//将index.html显示在客户端
+                res.write(data);
                 res.end();
             }
         });
